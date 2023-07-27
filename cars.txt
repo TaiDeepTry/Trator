@@ -1,0 +1,62 @@
+const listCar = JSON.parse(localStorage.getItem("carList")) || [
+  {
+    id: 1,
+    image: "Leonardo_Diffusion_Lamborghini_Aventador_chrome_front_bumber_l_0 (1).jpg",
+    name: "Lamborghini Aventador LP 780-4 Ultimae",
+    price: "600,000"
+  },
+  {
+    id: 2,
+    image: "Leonardo_Diffusion_Lamborghini_Huracn_chrome_front_bumber_lig_0.jpg",
+    name: "Lamborghini Huracán EVO",
+    price: "261,274"
+  },
+  {
+    id: 3,
+    image: "Leonardo_Diffusion_Lamborghini_Urus_chrome_front_bumber_light_0.jpg",
+    name: "Lamborghini Urus",
+    price: "218,009"
+  },
+  {
+    id: 4,
+    image: "Leonardo_Diffusion_Lamborghini_Sian_FKP_37_chrome_front_bumbe_0.jpg",
+    name: "Lamborghini Sian FKP 37",
+    price: "3,6 000 000 "
+  },
+  {
+    id: 5,
+    image: "Leonardo_Diffusion_Lamborghini_Aventador_SVJ_chrome_front_bum_0.jpg",
+    name: "Lamborghini Aventador SVJ",
+    price: "517,700"
+  },
+  {
+    id: 6,
+    image: "Leonardo_Diffusion_Lamborghini_Huracn_Performante_chrome_fron_0.jpg",
+    name: "Lamborghini Huracán Performante",
+    price: "274,390"
+  },
+  {
+    id: 7,
+    image: "Leonardo_Diffusion_LAMBORGHINI_CENTENARIO_chrome_front_bumber_0.jpg",
+    name: "Lamborghini Centenario",
+    price: "22 000 000 "
+  },
+  {
+    id: 8,
+    image: "Leonardo_Diffusion_Lamborghini_Veneno_chrome_front_bumber_ligh_0.jpg",
+    name: "Lamborghini Veneno",
+    price: "45 000 000"
+  },
+  {
+    id: 9,
+    image: "Leonardo_Diffusion_Lamborghini_Diablo_chrome_front_bumber_ligh_0.jpg",
+    name: "Lamborghini Diablo",
+    price: "300 000"
+  },
+  {
+    id: 10,
+    image: "Leonardo_Diffusion_Lamborghini_Diablo_chrome_bumber_lightning_0.jpg",
+    name: "Lamborghini Gallardo",
+    price: "250 000"
+  }
+];

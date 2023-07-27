@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        /* Style for table header */
+        thead th {
+            background-color: #f2f2f2;
+            text-align: left;
+            padding: 10px;
+            font-weight: bold;
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Style for table body rows */
+        tbody tr {
+            border-bottom: 1px solid #ccc;
+        }
+
+        /* Alternate row background color for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Style for table cells */
+        td {
+            padding: 10px;
+        }
+
+        /* Style for image in the table */
+        td img {
+            max-width: 100px;
+            max-height: 80px;
+        }
+
+        /* Style for the actions column */
+        td.actions {
+            text-align: center;
+        }
+
+        /* Style for buttons in the actions column */
+        td.actions button {
+            padding: 6px 12px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Hover effect for buttons */
+        td.actions button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add some spacing around the table */
+        table {
+            margin: 20px 0;
+        }
+
+        /* Add a box-shadow to the table for a subtle effect */
+        table {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Lamborghini Cars</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="carList">
+            <!-- Car list will be populated dynamically -->
+        </tbody>
+    </table>
+    <button onclick="addCar()">Add New Car</button>
+
+    <script src="./js/data.js"></script>
+    <script>
+        
+
+        // Function to display the car data in the table
+        function displayCarList() {
+            carList.innerHTML = '';
+
+            listCar.forEach(car => {
+                const newRow = document.createElement("tr");
+                newRow.innerHTML = `
+      <td>${car.id}</td>
+      <td><img src="./images/galery/${car.image}" alt="${car.name}" width="100"></td>
+      <td>${car.name}</td>
+      <td>${car.price}</td>
+      <td>
+        <button onclick="editCar(${car.id})">Edit</button>
+        <button onclick="deleteCar(${car.id})">Delete</button>
+      </td>`;
+                carList.appendChild(newRow);
+            });
+        }
+    
+        // Function to add a new car to the list
+        function addCar() {
+            const newCar = {
+                id: listCar.length + 1,
+                image: prompt("Enter the image URL for the new car:"),
+                name: prompt("Enter the name of the new car:"),
+                price: prompt("Enter the price of the new car:")
+            };
+
+            listCar.push(newCar);
+            displayCarList();
+            saveToLocalStorage();// Refresh the table after adding the new car
+        }
+
+        // Function to edit a car from the list
+        function editCar(carId) {
+            const carIndex = listCar.findIndex(car => car.id === carId);
+
+            if (carIndex === -1) {
+                alert("Car not found!");
+                return;
+            }
+
+            const updatedCar = {
+                id: carId,
+                image: prompt("Enter the updated image URL:"),
+                name: prompt("Enter the updated car name:"),
+                price: prompt("Enter the updated car price:")
+            };
+
+            listCar[carIndex] = updatedCar;
+            displayCarList();
+            saveToLocalStorage();// Refresh the table after editing the car
+        }
+
+        // Function to delete a car from the list
+        function deleteCar(carId) {
+            const carIndex = listCar.findIndex(car => car.id === carId);
+
+            if (carIndex === -1) {
+                alert("Car not found!");
+                return;
+            }
+
+            listCar.splice(carIndex, 1);
+            displayCarList();
+            saveToLocalStorage(); // Refresh the table after deleting the car
+        }
+        function saveToLocalStorage() {
+            localStorage.setItem("carList", JSON.stringify(listCar));
+        }
+
+        // Call the displayCarList function to populate the table initially
+        displayCarList();
+
+    </script>
+</body>
+
+</html>

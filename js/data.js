@@ -1,5 +1,6 @@
 let lists = document.querySelector(".list-cars");
-const listCar = [
+const carList = document.getElementById("carList");
+const listCar = JSON.parse(localStorage.getItem("carList")) || [
   {
     id: 1,
     image: "Leonardo_Diffusion_Lamborghini_Aventador_chrome_front_bumber_l_0 (1).jpg",
