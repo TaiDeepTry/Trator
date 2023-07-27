@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Gallery</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="../trator-1.0.0/css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" type="text/css" href="../trator-1.0.0/css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="./css/responsive.css">
+  <!-- fevicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <!-- font css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <script>
+    window.onload = function () {
+      // Lấy tham số id từ URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get('id')); // Chuyển đổi id sang số nguyên
+
+      // Lấy thông tin sản phẩm dựa trên id
+      const product = getProductById(productId);
+
+      // Hiển thị thông tin sản phẩm trong trang chi tiết
+      const nameElement = document.getElementById('name');
+      const imageElement = document.getElementById('image');
+      const priceElement = document.getElementById("price");
+
+      nameElement.textContent = product.name;
+      imageElement.src = `../trator-1.0.0/images/galery/${product.image}`;
+      priceElement.textContent = product.price;
+    };
+
+    function getProductById(id) {
+      // Giả sử danh sách sản phẩm đã được định nghĩa trước
+      const products = [
+        {
+          id: 1,
+          image: "Leonardo_Diffusion_Lamborghini_Aventador_chrome_front_bumber_l_0 (1).jpg",
+          name: "Lamborghini Aventador LP 780-4 Ultimae",
+          price: "600,000"
+        },
+        {
+          id: 2,
+          image: "Leonardo_Diffusion_Lamborghini_Huracn_chrome_front_bumber_lig_0.jpg",
+          name: "Lamborghini Huracán EVO",
+          price: "261,274"
+        },
+        {
+          id: 3,
+          image: "Leonardo_Diffusion_Lamborghini_Urus_chrome_front_bumber_light_0.jpg",
+          name: "Lamborghini Urus",
+          price: "218,009"
+        },
+        {
+          id: 4,
+          image: "Leonardo_Diffusion_Lamborghini_Sian_FKP_37_chrome_front_bumbe_0.jpg",
+          name: "Lamborghini Sian FKP 37",
+          price: "3.6 million"
+        },
+        {
+          id: 5,
+          image: "Leonardo_Diffusion_Lamborghini_Aventador_SVJ_chrome_front_bum_0.jpg",
+          name: "Lamborghini Aventador SVJ",
+          price: "517,700"
+        },
+        {
+          id: 6,
+          image: "Leonardo_Diffusion_Lamborghini_Huracn_Performante_chrome_fron_0.jpg",
+          name: "Lamborghini Huracán Performante",
+          price: "274,390"
+        },
+        {
+          id: 7,
+          image: "Leonardo_Diffusion_LAMBORGHINI_CENTENARIO_chrome_front_bumber_0.jpg",
+          name: "Lamborghini Centenario",
+          price: "2.2 million"
+        },
+        {
+          id: 8,
+          image: "Leonardo_Diffusion_Lamborghini_Veneno_chrome_front_bumber_ligh_0.jpg",
+          name: "Lamborghini Veneno",
+          price: "4.5 million"
+        },
+        {
+          id: 9,
+          image: "Leonardo_Diffusion_Lamborghini_Diablo_chrome_front_bumber_ligh_0.jpg",
+          name: "Lamborghini Diablo",
+          price: "300,000"
+        },
+        {
+          id: 10,
+          image: "Leonardo_Diffusion_Lamborghini_Diablo_chrome_bumber_lightning_0.jpg",
+          name: "Lamborghini Gallardo",
+          price: "250,000"
+        }
+      ];
+
+      return products.find(product => product.id === id);
+    }
+
+  </script>
+  <title>Product Detail</title>
+
+</head>
+
+<body>
+  <div class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Về chúng tôi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Dịch vụ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Thư viện xe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="client.html">Khách hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link addtocart" onclick="active_cart()" href="#">Giỏ hàng</a>
+           </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="call_text_main">
+    <div class="container">
+       <div class="call_taital">
+          <div class="call_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">68 Đặng Thùy Trâm, Bình Thạnh</span></a></div>
+          <div class="call_text"><a href="#"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+84) 123456789</span></a></div>
+          <div class="call_text"><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_15">ttai78029@gmail.com</span></a></div>
+       </div>
+    </div>
+ </div>
+  <div class="cart-ui"></div>
+  <div class="container product-detail d-flex align-items-center">
+    <div class="row  flex-grow-1">
+      <div class="col-6">
+        <div class="img">
+          <img id="image" src="" alt="">
+        </div>
+      </div>
+      <div class="col-6 flex-grow-1">
+        <div id="name" class="product-title flex-grow-1">
+
+        </div>
+        <div class="product-sub-title">
+          Biểu tượng tốc độ và sang trọng
+        </div>
+        <hr>
+        <p>
+          Lamborghini Aventador là một dòng siêu xe thể thao động cơ đặt giữa (mid-engine sports car) được sản xuất bởi
+          hãng xe Lamborghini, Ý. Chiếc xe này được giới thiệu lần đầu tiên vào ngày 28 tháng 2 năm 2011 tại triển lãm
+          Geneva Motor Show.
+        </p>
+        <hr>
+        <div class="specs">
+          <div class="spec">
+            <div class="spec-title">
+              CÔNG SUẤT (CV)
+            </div>
+            <div class="spec-detail">
+              650 CV / 478 KW
+            </div>
+          </div>
+          <div class="spec">
+            <div class="spec-title">
+              TỐC ĐỘ TỐI ĐA
+            </div>
+            <div class="spec-detail">
+              305km /h
+            </div>
+          </div>
+        </div>
+        <div class="looking-button">
+          Đặt trước chỉ từ <span id="price"></span>
+        </div>
+        <div class="read_bt"><a href="#">Đặt ngay</a></div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+</body>
+
+</html>

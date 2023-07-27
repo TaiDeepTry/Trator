@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- mobile metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <!-- site metas -->
+  <title>Gallery</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="../trator-1.0.0/css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" type="text/css" href="../trator-1.0.0/css/style.css">
+  <!-- Responsive-->
+  <link rel="stylesheet" href="./css/responsive.css">
+  <!-- fevicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <!-- font css -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Tweaks for older IEs-->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+  <title>Product Detail</title>
+
+</head>
+
+<body>
+  <div class="header_section">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Về chúng tôi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Dịch vụ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Thư viện xe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="client.html">Khách hàng</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+          </form>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="call_text_main">
+    <div class="container">
+       <div class="call_taital">
+          <div class="call_text"><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="padding_left_15">68 Đặng Thùy Trâm, Bình Thạnh</span></a></div>
+          <div class="call_text"><a href="#"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+84) 123456789</span></a></div>
+          <div class="call_text"><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i><span class="padding_left_15">ttai78029@gmail.com</span></a></div>
+       </div>
+    </div>
+ </div>
+  <div class="alert">
+         <span id="alert">thêm vào giỏ hàng thành công</span>
+      </div>
+ <h1 style="text-align: center;font-family: Prompt; font-weight: bold;font-size: 2rem;">Danh sách sản phẩm trong giỏ hàng</h1>
+ <div class="containerr">
+  <div id="checkout-items">
+    <!-- Các sản phẩm sẽ được hiển thị ở đây -->
+  </div>
+  <div id="checkout_card">
+    <div class="payment">
+      <div class='credit-info'>
+        <div class='credit-info-content'>
+          <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
+          Card Number
+          <input class='input-field'></input>
+          Card Holder
+          <input class='input-field'></input>
+          <table class='half-input-table'>
+            <tr>
+              <td> Expires
+                <input class='input-field'></input>
+              </td>
+              <td>CVC
+                <input class='input-field'></input>
+              </td>
+            </tr>
+          </table>
+          <button onclick="successfully()"  class='pay-btn'>Checkout</button>
+          <h2 class="total-price">Tổng tiền: <span id="checkout-total">$ 0 </span></h2>
+        </div>
+
+    </div>
+  </div>
+ </div>
+
+
+ <script>
+   // Lấy thông tin giỏ hàng từ LocalStorage
+   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+   // Hiển thị thông tin giỏ hàng trên trang checkout.html
+   const checkoutItemsDiv = document.getElementById("checkout-items");
+   checkoutItemsDiv.innerHTML = "";
+
+   cartItems.forEach((item) => {
+     const productDiv = document.createElement("div");
+     productDiv.classList.add("check_out_item");
+     productDiv.innerHTML = `
+       <div class="added-img">
+         <img src="./images/galery/${item.image}" alt="lamborghini">
+       </div>
+       <div class="group">
+        <div class="added-info">
+         <div class="name">
+           ${item.name}
+         </div>
+         <div class="sub-info">
+           Biểu tượng tốc độ và sang trọng
+         </div>
+       </div>
+       <div class="price">
+         <span>$${item.price}</span>
+       </div>
+        </div>
+     `;
+     checkoutItemsDiv.appendChild(productDiv);
+   });
+
+   // Tính tổng giá tiền
+   const total = cartItems.reduce((total, item) => {
+     const quantity = item.quantity || 1;
+     const price = parseFloat(item.price.replace(/,/g, ""));
+     return total + quantity * price;
+   }, 0);
+
+   // Hiển thị tổng tiền
+   const checkoutTotalElement = document.getElementById("checkout-total");
+   checkoutTotalElement.textContent = `$${total}`;
+   
+
+   const checkoutInfoDiv = document.querySelector(".checkout-info");
+  const checkoutButton = document.querySelector(".checkout-button");
+
+  function successfully() {
+  // Call the displayAlert function with the desired message
+  displayAlert("Thanh Toán Thành Công");
+
+  // Redirect back to gallery.html after a short delay (e.g., 2 seconds)
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 1000);
+}
+function displayAlert(message) {
+  // Lấy tham chiếu đến phần tử .alert
+  const alertElement = document.querySelector(".alert");
+
+  // Đặt nội dung thông báo
+  const alertMessageElement = document.getElementById("alert");
+  alertMessageElement.textContent = message;
+
+  // Thêm class "active" để hiển thị thông báo
+  alertElement.classList.add("active");
+
+  // Tự động loại bỏ class "active" sau 2 giây
+  setTimeout(() => {
+    alertElement.classList.remove("active");
+  }, 2000);
+}
+ </script>
+</body>
+
+</html>
